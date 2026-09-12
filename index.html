@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Customer Retention & Cohort Analytics</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#142033;--muted:#64748b;--line:#dbe4ef;--blue:#2563eb;--green:#059669;--amber:#d97706;--red:#dc2626}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}.wrap{max-width:1180px;margin:auto;padding:34px 22px 60px}header{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:24px}h1{font-size:2rem;margin:0 0 5px}h2{font-size:1.15rem;margin:0 0 4px}.sub,.note{color:var(--muted)}.badge{background:#e8f0ff;color:var(--blue);padding:9px 14px;border-radius:99px;font-weight:750;white-space:nowrap}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 22px rgba(35,55,80,.05)}.kpi strong{font-size:1.8rem;display:block;margin-bottom:4px}.grid{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;margin-bottom:14px}.heat-wrap{overflow-x:auto}.heat{display:grid;grid-template-columns:100px repeat(6,minmax(65px,1fr));gap:7px;min-width:610px;margin-top:17px}.cell{padding:12px 7px;text-align:center;border-radius:8px;font-weight:700;font-size:.9rem}.label{background:#f1f5f9;color:var(--muted)}.h0{background:#dbeafe;color:#1e40af}.h1{background:#bfdbfe;color:#1e3a8a}.h2{background:#93c5fd;color:#172554}.h3{background:#60a5fa;color:#fff}.h4{background:#3b82f6;color:#fff}.empty{background:#f8fafc;color:#cbd5e1}.bars{margin-top:18px}.barrow{display:grid;grid-template-columns:90px 1fr 58px;gap:10px;align-items:center;margin:14px 0}.track{height:14px;background:#edf2f7;border-radius:20px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:20px}.barrow span:last-child{text-align:right;font-weight:700}.actions{display:grid;grid-template-columns:1fr 1fr;gap:14px}.decision{border-left:5px solid var(--green);background:#effcf7}.caution{border-left:5px solid var(--amber);background:#fff9ed}.decision p,.caution p{margin-bottom:0}.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;font-size:.85rem;color:var(--muted)}.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px}.small{font-size:.84rem}.footer{text-align:center;color:var(--muted);margin-top:22px}.table{width:100%;border-collapse:collapse;margin-top:12px}.table th,.table td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}.table th{color:var(--muted);font-size:.82rem;text-transform:uppercase}.good{color:var(--green);font-weight:750}
+@media(max-width:800px){header{align-items:flex-start;flex-direction:column}.kpis{grid-template-columns:1fr 1fr}.grid,.actions{grid-template-columns:1fr}}@media(max-width:480px){.kpis{grid-template-columns:1fr}h1{font-size:1.55rem}}
+</style>
+</head>
+<body><main class="wrap">
+<header><div><h1>Customer Retention & Cohort Analytics</h1><div class="sub">Lifecycle performance · Repeat purchase · Channel quality · Executive action</div></div><div class="badge">4,240 customers · 6 cohorts</div></header>
+<section class="kpis">
+ <div class="card kpi"><strong>53.4%</strong><span class="note">Latest cohort M1 retention</span></div>
+ <div class="card kpi"><strong>+10.9 pp</strong><span class="note">M1 improvement since January</span></div>
+ <div class="card kpi"><strong>57.8%</strong><span class="note">Best repeat rate · Email</span></div>
+ <div class="card kpi"><strong>$685.7K</strong><span class="note">Recorded channel revenue</span></div>
+</section>
+<section class="grid">
+ <article class="card"><h2>Cohort retention heatmap</h2><div class="sub">Share of each acquisition cohort purchasing again by month</div>
+  <div class="heat-wrap"><div class="heat" id="heat"></div></div>
+  <div class="legend"><span><i style="background:#dbeafe"></i>Lower</span><span><i style="background:#60a5fa"></i>Higher</span><span>Rows are acquisition months; M0 = first-purchase month.</span></div>
+ </article>
+ <article class="card"><h2>M1 retention trend</h2><div class="sub">Early repeat behavior is improving</div><div class="bars" id="bars"></div></article>
+</section>
+<section class="card" style="margin-bottom:14px"><h2>Acquisition channel quality</h2><div class="sub">First-order volume alone can hide long-term customer value</div>
+ <table class="table"><thead><tr><th>Channel</th><th>Customers</th><th>Revenue</th><th>Repeat rate</th><th>Signal</th></tr></thead><tbody id="channels"></tbody></table>
+</section>
+<section class="actions">
+ <article class="card decision"><h2>Decision</h2><p>Protect and scale <b>Email</b> and <b>Referral</b> lifecycle programs: they produce the strongest repeat behavior. Investigate the onboarding changes associated with the 10.9-point M1 improvement before expanding them.</p></article>
+ <article class="card caution"><h2>Measurement caution</h2><p>Do not shift budget from retention alone. Join channel performance to acquisition cost and contribution margin, then validate messaging or onboarding changes with controlled experiments.</p></article>
+</section>
+<div class="footer small">Portfolio analysis · SQL cohort logic · Metrics independently checked with Python</div>
+</main>
+<script>
+const cohorts=[
+ {c:'Jan',n:520,v:[100,42.5,33.1,27.3,23.5,20.2]},
+ {c:'Feb',n:610,v:[100,44.8,35.6,29.8,25.1,21.6]},
+ {c:'Mar',n:680,v:[100,47.2,37.9,32.1,27.8,23.9]},
+ {c:'Apr',n:735,v:[100,49.5,40.4,34.7,29.9,null]},
+ {c:'May',n:810,v:[100,51.1,42.6,36.5,null,null]},
+ {c:'Jun',n:885,v:[100,53.4,44.1,null,null,null]}
+];
+const channels=[['Paid Search',1120,168400,38.2],['Organic',980,172600,49.4],['Email',760,149800,57.8],['Social',690,89700,33.6],['Referral',490,105200,52.7]];
+const heat=document.querySelector('#heat');
+['Cohort','M0','M1','M2','M3','M4','M5'].forEach(x=>heat.insertAdjacentHTML('beforeend',`<div class="cell label">${x}</div>`));
+cohorts.forEach(r=>{heat.insertAdjacentHTML('beforeend',`<div class="cell label">${r.c}<br><small>${r.n}</small></div>`);r.v.forEach((v,i)=>{let cls=v===null?'empty':i===0?'h4':v>=45?'h3':v>=30?'h2':v>=20?'h1':'h0';heat.insertAdjacentHTML('beforeend',`<div class="cell ${cls}">${v===null?'—':v.toFixed(1)+'%'}</div>`)});});
+document.querySelector('#bars').innerHTML=cohorts.map(r=>`<div class="barrow"><span>${r.c} 2026</span><div class="track"><div class="bar" style="width:${r.v[1]/60*100}%"></div></div><span>${r.v[1]}%</span></div>`).join('');
+const maxRevenue=Math.max(...channels.map(x=>x[2]));
+document.querySelector('#channels').innerHTML=channels.map(x=>`<tr><td><b>${x[0]}</b></td><td>${x[1].toLocaleString()}</td><td>$${x[2].toLocaleString()}</td><td>${x[3]}%</td><td class="${x[3]>=50?'good':''}">${x[3]>=50?'Strong retention':x[3]<36?'Needs review':'Developing'}</td></tr>`).join('');
+</script></body></html>
