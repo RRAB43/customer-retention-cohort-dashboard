@@ -2,7 +2,7 @@
 
 An interactive portfolio project that turns customer purchase behavior into retention, repeat-purchase, channel-quality, and churn-risk decisions.
 
-**Live demo:** Add your GitHub Pages URL after publishing.
+**Live demo:** [Open the interactive Customer Retention & Cohort Analytics Dashboard](https://rrab43.github.io/customer-retention-cohort-dashboard/)
 
 ## Business question
 
@@ -61,4 +61,3 @@ customer-retention-cohort-dashboard/
 ## Important interpretation note
 
 Retention is descriptive, not automatically causal. Channel differences may reflect audience mix, campaign targeting, seasonality, or product experience. A budget decision should combine these metrics with acquisition cost, contribution margin, and controlled experiments.
-
